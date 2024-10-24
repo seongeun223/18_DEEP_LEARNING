@@ -23,4 +23,14 @@ def english_to_korean(input_text):
         forced_bos_token_id=translation_tokenizer.lang_code_to_id["ko_KR"]
     )
     output_text = translation_tokenizer.batch_decode(generated_tokens, skip_special_tokens=True)
-    return [postprocess_translation(text) for text in output_text]
+
+    # 번역 후 결과 출력
+    print(f"Before postprocess: {output_text}")
+
+    # postprocess_translation 적용
+    processed_text = [postprocess_translation(text) for text in output_text]
+
+    # 후처리 후 결과 출력
+    print(f"After postprocess: {processed_text}")
+
+    return processed_text

@@ -15,9 +15,15 @@ def postprocess_translation(text):
         "다른 질문이 있다면": "추가 문의사항이 있다면 고객센터 1234-5678로 문의 부탁드립니다.",
         "배달": "배송",
         "7 days of receipt": "수령 후 7일",
+        "size" : "사이즈",
+        "color": "색상",
+        "material": "재질"
     }
     
+    text_lower = text.lower()
     for wrong, correct in corrections.items():
-        text = text.replace(wrong, correct)
+        text_lower = text_lower.replace(wrong, correct)
+
+    print(f"Postprocessed text: {text_lower}")
     
-    return text
+    return text_lower
