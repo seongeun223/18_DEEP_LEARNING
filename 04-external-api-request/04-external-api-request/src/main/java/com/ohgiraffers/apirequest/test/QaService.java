@@ -1,7 +1,7 @@
 package com.ohgiraffers.apirequest.test;
 
-import com.ohgiraffers.apirequest.test.dto.RequestDTO;
-import com.ohgiraffers.apirequest.test.dto.ResponseDTO;
+import com.ohgiraffers.apirequest.test.dto.QaRequestDTO;
+import com.ohgiraffers.apirequest.test.dto.QaResponseDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -20,19 +20,19 @@ public class QaService {
         this.restTemplate = new RestTemplate();
     }
 
-    public ResponseDTO translateText(RequestDTO requestDTO) {
+    public QaResponseDTO translateText(QaRequestDTO qaRequestDTO) {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        HttpEntity<RequestDTO> entity = new HttpEntity<>(requestDTO, headers);
+        HttpEntity<QaRequestDTO> entity = new HttpEntity<>(qaRequestDTO, headers);
 
         try {
-            ResponseEntity<ResponseDTO> response = restTemplate.exchange(
+            ResponseEntity<QaResponseDTO> response = restTemplate.exchange(
                     FAST_API_SERVER_URL,
                     HttpMethod.POST,
                     entity,
-                    ResponseDTO.class
+                    QaResponseDTO.class
             );
 
             log.info("=== 서비스 응답 데이터 ===");

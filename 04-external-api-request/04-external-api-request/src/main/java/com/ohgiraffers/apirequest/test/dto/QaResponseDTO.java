@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseDTO {
+public class QaResponseDTO {
 
     private String translated_question;
     private String english_answer;

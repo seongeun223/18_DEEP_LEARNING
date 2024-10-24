@@ -1,7 +1,7 @@
 package com.ohgiraffers.apirequest.test;
 
-import com.ohgiraffers.apirequest.test.dto.RequestDTO;
-import com.ohgiraffers.apirequest.test.dto.ResponseDTO;
+import com.ohgiraffers.apirequest.test.dto.QaRequestDTO;
+import com.ohgiraffers.apirequest.test.dto.QaResponseDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,12 +20,12 @@ public class QaController {
     }
 
     @PostMapping
-    public ResponseDTO questionTest(@RequestBody RequestDTO requestDTO) {
+    public QaResponseDTO questionTest(@RequestBody QaRequestDTO qaRequestDTO) {
 
         log.info("번역[RestTemplate] Controller 요청 들어옴...");
-        log.info("question: {}", requestDTO.getQuestion());
+        log.info("question: {}", qaRequestDTO.getQuestion());
 
-        ResponseDTO result = qaService.translateText(requestDTO);
+        QaResponseDTO result = qaService.translateText(qaRequestDTO);
 
         return result;
     }
