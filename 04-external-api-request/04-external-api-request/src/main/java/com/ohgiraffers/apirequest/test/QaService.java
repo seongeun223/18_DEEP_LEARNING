@@ -14,7 +14,7 @@ public class QaService {
 
     private final RestTemplate restTemplate;
 
-    private final String FAST_API_SERVER_URL = "http://localhost:8000/ask_question/";
+    private final String FAST_API_SERVER_URL = "http://localhost:8000/ask_question";
 
     public QaService(RestTemplate restTemplate) {
         this.restTemplate = new RestTemplate();
@@ -36,7 +36,7 @@ public class QaService {
             );
 
             log.info("=== 서비스 응답 데이터 ===");
-            log.info("결과 : {}", response.getBody().getTranslated_question(), response.getBody().getEnglish_answer(), response.getBody().getKorean_answer());
+            log.info("결과 : {}", response.getBody());
 
             return response.getBody();
         } catch (RestClientException e) {

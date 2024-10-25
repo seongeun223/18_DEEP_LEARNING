@@ -34,7 +34,7 @@ async def answer_question(question: str):
     en_answer = res['answer']
 
     # 3. 영어로 된 답변을 한국어로 번역
-    answer = english_to_korean(en_answer)
+    answer = english_to_korean(en_answer)[0]
 
     # 4. 번역된 답변 반환
     return {"translated_question": translated_question, "english_answer": en_answer, "korean_answer": answer}
